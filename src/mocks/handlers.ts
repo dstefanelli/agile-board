@@ -1,6 +1,8 @@
 import { http, HttpResponse } from "msw";
 
-const AUTH_TOKEN = "fmwlkfm-jetoe-123432r42";
+const AUTH_TOKEN = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJ1c2VySWQiOiIxMjM0NTYiLCJlbWFpbCI6InRlc3R1c2VyQGRiLmNvbSIsInJvbGUiOiJkZXZlbG9wZXIiLCJpYXQiOjE3MjY2MTIwMDAsImV4cCI6MTcyNjY5ODQwMH0.
+dummysignature1234567890abcdef`;
 
 export const handlers = [
   http.post("/login", async ({ request }) => {
@@ -9,7 +11,7 @@ export const handlers = [
       password: string;
     };
 
-    if (email === "test@demo.com" && password === "123456") {
+    if (email === "test@db.com" && password === "1234") {
       return HttpResponse.json(
         {
           token: AUTH_TOKEN,

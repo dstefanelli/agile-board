@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useAuth } from "@/context/AuthContext";
+import { useNavigate } from 'react-router';
+import { useAuth } from "@/hooks/useAuth";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +13,7 @@ import {
 } from "@/components/ui/card";
 
 function LoginPage() {
+  const navigate = useNavigate();
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +22,8 @@ function LoginPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     try {
-      await login(email, password);
+      await login( email, password);
+      navigate("/dashboard");
     } catch {
       setError("Invalid password or user");
     }
@@ -42,7 +45,7 @@ function LoginPage() {
                     <Input
                       id="email"
                       type="email"
-                      placeholder="m@example.com"
+                      placeholder="john@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required

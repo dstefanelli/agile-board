@@ -1,4 +1,9 @@
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
+
 function NavBar() {
+  const { logout } = useAuth();
+
   return (
     <>
       <nav className="bg-sky-600">
@@ -65,6 +70,7 @@ function NavBar() {
                     />
                   </svg>
                 </button>
+                <Button className="m-2" onClick={logout}>Logout</Button>
               </div>
             </div>
             <div className="-mr-2 flex md:hidden">
