@@ -3,7 +3,7 @@ export interface Task {
   title: string;
   description?: string;
   status: TaskStatus;
-  assignee: string;
+  assignee?: string;
 }
 
 export type TaskStatus = "To Do" | "In Progress" | "Done";

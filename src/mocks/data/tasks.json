@@ -1,11 +1,26 @@
 [
-  { "id": 1, "title": "Setup project", "assignee": "Alice", "status": "todo" },
+  { 
+    "id": "T001", 
+    "title": "Setup project", 
+    "assignee": "Alice",
+    "status": "To Do" 
+  },
   {
-    "id": 2,
+    "id": "T002",
     "title": "Implement login",
     "assignee": "Bob",
-    "status": "in-progress"
+    "status": "In Progress"
   },
-  { "id": 3, "title": "Create dashboard", "status": "done" },
-  { "id": 4, "title": "Write tests", "assignee": "Charlie", "status": "todo" }
+  { 
+    "id": "T003",
+    "title": "Create dashboard", 
+    "status": "Done",
+    "assignee": "Alice"
+  },
+  { 
+    "id": "T004", 
+    "title": "Write tests", 
+    "status": "To Do",
+    "assignee": null
+  }
 ]

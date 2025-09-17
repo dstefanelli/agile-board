@@ -1,16 +1,17 @@
 import axios from "axios";
 import type { Task } from "@/models/task";
+import { EnvConfig } from '@/configs/env.config';
 
+const { apiUrl } = EnvConfig();
 const token = localStorage.getItem("token");
-const API_URL = import.meta.env.VITE_API_URL;
 
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: apiUrl,
   headers: { Authorization: `Bearer ${token}` },
 });
 
 export async function fetchTasks(): Promise<Task[]> {
-  const res = await api.get("/tasks");
+  const res = await api.get(`/api/tasks`);
   return res.data;
 }
 

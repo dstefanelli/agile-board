@@ -6,8 +6,7 @@ function NavBar() {
   const { logout } = useAuth();
 
   return (
-    <>
-      <nav className="bg-indigo-600">
+    <nav className="fixed top-0 left-0 w-full z-50 shadow-sm">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
@@ -18,31 +17,31 @@ function NavBar() {
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a
                     href="#"
-                    className="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-white/5"
+                    className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
                   >
                     Team
                   </a>
                   <a
                     href="#"
-                    className="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-white/5"
+                    className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
                   >
                     Projects
                   </a>
                   <a
                     href="#"
-                    className="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-white/5"
+                    className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
                   >
                     Calendar
                   </a>
                   <a
                     href="#"
-                    className="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-white/5"
+                    className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
                   >
                     Reports
                   </a>
                   <a
                     href="#"
-                    className="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-white/5"
+                    className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
                   >
                     Create
                   </a>
@@ -98,7 +97,6 @@ function NavBar() {
           </div>
         </div>
       </nav>
-    </>
   );
 }
 
