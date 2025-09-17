@@ -3,7 +3,8 @@ import { type User } from "@/models/user";
 
 type AuthContextType = {
   user: User | null;
-  login: (email: string, password: string) => void;
+  isLoading: boolean;
+  login: (email: string, password: string) => Promise<void>;
   logout: () => void;
 };
 

@@ -1,12 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import logo from "@/assets/scrum.svg";
+//import { useEffect } from "react";
 
 function NavBar() {
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
+  
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 shadow-sm">
+    <nav className="fixed top-0 left-0 w-full z-50 shadow-sm bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
@@ -39,17 +41,24 @@ function NavBar() {
                   >
                     Reports
                   </a>
-                  <a
-                    href="#"
+                  <Button 
+                    variant="outline" 
                     className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
+                    //onClick={handleCreateNewTask}
                   >
-                    Create
-                  </a>
+                    New Task
+                  </Button>
                 </div>
               </div>
             </div>
             <div className="hidden md:block">
               <div className="ml-4 flex items-center md:ml-6">
+                <div className="flex -space-x-2 overflow-hidden">
+                  <img 
+                    src={user?.image}
+                    alt={user?.name}
+                    className="inline-block size-8 rounded-full ring-2 ring-white outline -outline-offset-1 outline-black/5" />
+                </div>
                 <Button className="m-2" onClick={logout}>
                   Logout
                 </Button>

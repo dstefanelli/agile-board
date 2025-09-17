@@ -5,6 +5,14 @@ import NavBar from "@/components/NavBar";
 import { TaskCard } from "@/components/TaskCard";
 import Spinner from "@/components/Spinner";
 import ErrorMessage from "@/components/ErrorMessage";
+import { type Task } from "@/models/task";
+import { useMemo } from "react";
+
+const BOARD_COLUMNS = [
+  { id: 'todo', title: 'TO DO', status: 'To Do' },
+  { id: 'in-progress', title: 'IN PROGRESS', status: 'In Progress' },
+  { id: 'done', title: 'DONE', status: 'Done' },
+] as const;
 
 function DashboardPage() {
   const {
@@ -15,6 +23,17 @@ function DashboardPage() {
     queryKey: ["tasks"],
     queryFn: fetchTasks,
   });
+
+  const groupedTasks = useMemo(() => {
+    return tasks.reduce<Record<string, Task[]>>((acc, task) => {
+      const status = task.status;
+      if (!acc[status]) {
+        acc[status] = [];
+      }
+      acc[status].push(task);
+      return acc;
+    }, {});
+  }, [tasks]);
 
   if (isError) return <ErrorMessage message="An error ocurred =(" />;
 
@@ -30,21 +49,16 @@ function DashboardPage() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
                 <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:space-y-0 lg:gap-x-6">
-                  <div className="group relative">
-                    <h2 className="text-2xl font-bold text-gray-900">TO DO</h2>
-                  </div>
-                  {tasks.map((task) => (
-                    <TaskCard task={task} key={task.id} />
+                  {BOARD_COLUMNS.map(column => (
+                    <div key={column.id} className="group relative">
+                      <h2 className="text-1xl font-bold text-gray-900 mb-4">
+                        {column.title}
+                      </h2>
+                      {(groupedTasks[column.status] || []).map((task) => (
+                        <TaskCard task={task} key={task.id} />
+                      ))}
+                    </div>
                   ))}
-                  {/* <div className="group relative">
-                    <h2 className="text-2xl font-bold text-gray-900">
-                      IN PROGRESS
-                    </h2>
-                  </div>
-                  <div className="group relative">
-                    <h2 className="text-2xl font-bold text-gray-900">DONE</h2>
-                    <div></div>
-                  </div> */}
                 </div>
               </div>
             </div>

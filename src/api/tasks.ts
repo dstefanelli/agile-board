@@ -22,6 +22,6 @@ export async function updateTask({
   id: number;
   updates: Partial<Task>;
 }): Promise<Task> {
-  const res = await api.put(`/tasks/${id}`, updates);
+  const res = await api.put<Task>(`/tasks/${id}`, updates);
   return res.data;
 }

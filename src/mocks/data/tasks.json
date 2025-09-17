@@ -9,7 +9,8 @@
     "id": "T002",
     "title": "Implement login",
     "assignee": "Bob",
-    "status": "In Progress"
+    "status": "In Progress",
+    "description": "Setting up OAuth authentication flow and implementing user session management."
   },
   { 
     "id": "T003",
@@ -22,5 +23,99 @@
     "title": "Write tests", 
     "status": "To Do",
     "assignee": null
+  },
+  {
+    "id": "T005",
+    "title": "Implement drag and drop for tasks",
+    "assignee": "Alice",
+    "status": "To Do"
+  },
+  {
+    "id": "T006",
+    "title": "Add task filtering functionality",
+    "assignee": "Bob",
+    "status": "In Progress",
+    "description": "Creating filters for status, assignee and priority. Adding clear filter option."
+  },
+  {
+    "id": "T007",
+    "title": "Create user profile page",
+    "assignee": "Alice",
+    "status": "To Do"
+  },
+  {
+    "id": "T008",
+    "title": "Implement task search feature",
+    "assignee": null,
+    "status": "To Do"
+  },
+  {
+    "id": "T009",
+    "title": "Add task priority levels",
+    "assignee": "Bob",
+    "status": "Done"
+  },
+  {
+    "id": "T010",
+    "title": "Create sprint planning view",
+    "assignee": "Alice",
+    "status": "In Progress",
+    "description": "Implementing drag-and-drop interface for sprint planning. Adding story point estimation."
+  },
+  {
+    "id": "T011",
+    "title": "Implement email notifications",
+    "assignee": null,
+    "status": "To Do"
+  },
+  {
+    "id": "T012",
+    "title": "Add task comments feature",
+    "assignee": "Bob",
+    "status": "To Do"
+  },
+  {
+    "id": "T013",
+    "title": "Create burndown chart",
+    "assignee": "Alice",
+    "status": "Done"
+  },
+  {
+    "id": "T014",
+    "title": "Implement task templates",
+    "assignee": "Bob",
+    "status": "In Progress",
+    "description": "Creating reusable task templates with pre-defined fields and checklist items."
+  },
+  {
+    "id": "T015",
+    "title": "Add task dependencies",
+    "assignee": "Alice",
+    "status": "To Do"
+  },
+  {
+    "id": "T016",
+    "title": "Create team workload view",
+    "assignee": null,
+    "status": "To Do"
+  },
+  {
+    "id": "T017",
+    "title": "Implement time tracking",
+    "assignee": "Bob",
+    "status": "Done"
+  },
+  {
+    "id": "T018",
+    "title": "Add custom task fields",
+    "assignee": "Alice",
+    "status": "In Progress",
+    "description": "Building UI for custom field creation. Implementing field validation and storage."
+  },
+  {
+    "id": "T019",
+    "title": "Create project analytics dashboard",
+    "assignee": "Bob",
+    "status": "To Do"
   }
 ]
