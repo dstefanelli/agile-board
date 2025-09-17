@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { useAuth } from "@/hooks/useAuth";
 import LoginPage from "@/pages/LoginPage";
 import DashboardPage from "@/pages/DashboardPage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
   const { user } = useAuth();
@@ -9,6 +10,7 @@ function PrivateRoute({ children }: { children: JSX.Element }) {
 }
 
 export default function AppRouter() {
+  const queryClient = new QueryClient();
   return (
     <BrowserRouter>
       <Routes>
@@ -17,7 +19,9 @@ export default function AppRouter() {
           path="/dashboard"
           element={
             <PrivateRoute>
-              <DashboardPage />
+              <QueryClientProvider client={queryClient}>
+                <DashboardPage />
+              </QueryClientProvider>
             </PrivateRoute>
           }
         />

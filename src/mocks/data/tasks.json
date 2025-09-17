@@ -1,0 +1,11 @@
+[
+  { "id": 1, "title": "Setup project", "assignee": "Alice", "status": "todo" },
+  {
+    "id": 2,
+    "title": "Implement login",
+    "assignee": "Bob",
+    "status": "in-progress"
+  },
+  { "id": 3, "title": "Create dashboard", "status": "done" },
+  { "id": 4, "title": "Write tests", "assignee": "Charlie", "status": "todo" }
+]
