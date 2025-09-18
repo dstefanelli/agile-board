@@ -65,8 +65,8 @@ export function makeServer({ environment = "development" } = {}) {
           }
           return schema.db.tasks;
         },
-        { timing: 0 }
-      ); // Simulate 3 seconds delay
+        { timing: 3000 } // Simulate 3 seconds delay
+      );
 
       // PUT tasks/:id
       this.put("/tasks/:id", (schema, request) => {
@@ -77,8 +77,10 @@ export function makeServer({ environment = "development" } = {}) {
         if (!task) {
           return new Response(404, {}, { error: "Task not found" });
         }
+        if (task.status === "Done") {
+          return new Response(404, {}, { error: "This task is Done" });
+        }
 
-        // Actualizar la tarea en la base de datos
         schema.db.tasks.update(id, { ...task, ...updates });
         return schema.db.tasks.find(id);
       });
