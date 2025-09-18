@@ -16,7 +16,7 @@ interface Props {
   task: Task;
 }
 
-export function TaskCard({ task }: Props) {
+export default function TaskCard({ task }: Props) {
   // const initialTitle = task.title;
   // const [title, setTitle] = useState(initialTitle);
   // const [draft, setDraft] = useState(initialTitle);
@@ -30,7 +30,6 @@ export function TaskCard({ task }: Props) {
   //   setEditing(false);
   // }
 
-  
   // function handleKeyDown(e: React.KeyboardEvent) {
   //   if (e.key === 'Enter' && !e.shiftKey) {
   //     e.preventDefault();

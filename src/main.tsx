@@ -1,12 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { makeServer } from "@/mocks/server";
-import App from "@/App.tsx";
 import { AuthProvider } from "@/context/AuthProvider";
-import { EnvConfig } from '@/configs/env.config';
+import { EnvConfig } from "@/configs/env.config";
+import App from "@/App.tsx";
 
 const { environment } = EnvConfig();
-if (environment === 'development') {
+if (environment === "development") {
   makeServer();
 }
 

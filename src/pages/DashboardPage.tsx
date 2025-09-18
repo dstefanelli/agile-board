@@ -2,19 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchTasks } from "@/api/tasks";
 import Header from "@/components/Header";
 import NavBar from "@/components/NavBar";
-import { TaskCard } from "@/components/TaskCard";
+import TaskCard from "@/components/TaskCard";
 import Spinner from "@/components/Spinner";
 import ErrorMessage from "@/components/ErrorMessage";
 import { type Task } from "@/models/task";
 import { useMemo } from "react";
 
 const BOARD_COLUMNS = [
-  { id: 'todo', title: 'TO DO', status: 'To Do' },
-  { id: 'in-progress', title: 'IN PROGRESS', status: 'In Progress' },
-  { id: 'done', title: 'DONE', status: 'Done' },
+  { id: "todo", title: "TO DO", status: "To Do" },
+  { id: "in-progress", title: "IN PROGRESS", status: "In Progress" },
+  { id: "done", title: "DONE", status: "Done" },
 ] as const;
 
-function DashboardPage() {
+export default function DashboardPage() {
   const {
     data: tasks = [],
     isLoading,
@@ -49,7 +49,7 @@ function DashboardPage() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
                 <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:space-y-0 lg:gap-x-6">
-                  {BOARD_COLUMNS.map(column => (
+                  {BOARD_COLUMNS.map((column) => (
                     <div key={column.id} className="group relative">
                       <h2 className="text-1xl font-bold text-gray-900 mb-4">
                         {column.title}
@@ -68,5 +68,3 @@ function DashboardPage() {
     </div>
   );
 }
-
-export default DashboardPage;
