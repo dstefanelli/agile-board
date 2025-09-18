@@ -1,13 +1,8 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateTask } from "@/api/tasks";
 import { type Task } from "@/models/task";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Pencil, CircleX } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -19,75 +14,112 @@ interface Props {
 export default function TaskCard({ task }: Props) {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
-  const [draft, setDraft] = useState(task.title);
-  const [editing, setEditing] = useState(false);
+  const [draftTitle, setDraftTitle] = useState(task.title);
+  const [titleEditing, setTitleEditing] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      console.log("titleEditing", titleEditing);
+      if (
+        titleEditing &&
+        cardRef.current &&
+        !cardRef.current.contains(event.target as Node)
+      ) {
+        handleCancel();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [titleEditing]);
+
+  useEffect(() => {
+    // Focus input when entering edit mode
+    if (titleEditing && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [titleEditing]);
 
   const updateMutation = useMutation({
-    mutationFn: (newTitle: string) => updateTask({ id: task.id, updates: { title: newTitle } }),
+    mutationFn: (newTitle: string) =>
+      updateTask({
+        id: task.id,
+        updates: {
+          title: newTitle,
+        },
+      }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["tasks"] });
     },
     onError: (error) => {
-      // Revert changes on error
-      setDraft(task.title);
+      setDraftTitle(task.title);
       console.error("Failed to update task:", error);
-    }
+    },
   });
 
   function handleSave() {
-    if (draft !== task.title) {
-      updateMutation.mutate(draft);
+    if (draftTitle !== task.title) {
+      updateMutation.mutate(draftTitle);
     }
-    setEditing(false);
+    setTitleEditing(false);
   }
 
   function handleCancel() {
-    setDraft(task.title);
-    setEditing(false);
+    setDraftTitle(task.title);
+    setTitleEditing(false);
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSave();
-    } else if (e.key === 'Escape') {
+    } else if (e.key === "Escape") {
       handleCancel();
     }
   }
 
   return (
-    <Card className="w-full h-auto mb-4">
+    <Card className="w-full h-auto mb-4 gap-2" ref={cardRef}>
       <CardHeader>
         <CardTitle>
           <div className="flex flex-row gap-2 justify-between mb-2">
-              <div>{task.id}</div>
-              <div>{task.status}</div>
-            </div>
+            <div>{task.id}</div>
+            <div>{task.status}</div>
+          </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="relative">
           <Input
-            id="title"
+            ref={inputRef}
+            id={`title-${task.id}`}
             type="text"
-            defaultValue={editing ? draft : task.title}
-            disabled={!editing || updateMutation.isPending}
-            onChange={(e) => setDraft(e.target.value)}
+            value={titleEditing ? draftTitle : task.title}
+            onChange={(e) => setDraftTitle(e.target.value)}
             onKeyDown={handleKeyDown}
-            onClick={() => setEditing(true)}
-             className={`pr-16 ${!editing ? 'cursor-pointer hover:bg-slate-50' : ''} 
-              ${updateMutation.isPending ? 'opacity-50' : ''}`}
+            onClick={() => !titleEditing && setTitleEditing(true)}
+            title={t("task_card.click_to_edit")}
+            className={`pl-0 pr-16 border-1 border-transparent shadow-none hover:outline-2 font-bold text-3xl ${
+              !titleEditing
+                ? "cursor-pointer hover:border-slate-50"
+                : "border-blue-400"
+            }`}
           />
-          {editing && (
+          {titleEditing && (
             <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1">
               <Pencil
                 size={16}
-                className="cursor-pointer text-green-600"
+                className="cursor-pointer text-green-700"
                 onClick={handleSave}
               />
               <CircleX
                 size={16}
-                className="cursor-pointer text-red-600"
+                className="cursor-pointer text-red-400"
                 onClick={handleCancel}
               />
             </div>
@@ -97,16 +129,18 @@ export default function TaskCard({ task }: Props) {
         {task.description ? (
           <p className="mt-2 text-sm text-gray-600">{task.description}</p>
         ) : null}
-  
+
         {task.assignee ? (
-          <p className="mt-2 text-sm text-gray-600 flex justify-end"><em>{t('task_card.assignee', { name: task.assignee })}</em></p>
+          <p className="mt-2 text-sm text-gray-600 flex justify-end">
+            <em>{t("task_card.assignee", { name: task.assignee })}</em>
+          </p>
         ) : null}
 
-        {updateMutation.isError && (
+        {/* {updateMutation.isError && (
           <p className="text-sm text-red-500 mt-1">
-            {t('task_card.update_failed')}
+            {t("task_card.update_failed")}
           </p>
-        )}
+        )} */}
       </CardContent>
     </Card>
   );

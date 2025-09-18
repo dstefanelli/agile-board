@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { Task } from "@/models/task";
-import { EnvConfig } from '@/configs/env.config';
+import { EnvConfig } from "@/configs/env.config";
 
 const { apiUrl } = EnvConfig();
 const token = localStorage.getItem("token");
@@ -22,6 +22,6 @@ export async function updateTask({
   id: string;
   updates: Partial<Task>;
 }): Promise<Task> {
-  const res = await api.put<Task>(`/tasks/${id}`, updates);
+  const res = await api.put<Task>(`/api/tasks/${id}`, updates);
   return res.data;
 }
