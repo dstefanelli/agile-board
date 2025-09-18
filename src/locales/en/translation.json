@@ -1,0 +1,60 @@
+{
+    "login_page": {
+        "title": "Login to your account",
+        "email": "Email",
+        "email_placeholder": "john@example.com",
+        "password": "Password",
+        "password_placeholder": "Enter your password",
+        "submit_button": "Login",
+        "invalid_credentials": "Invalid email or password"
+    },
+    "dashboard_page": {
+        "welcome_message": "Hi {{name}}",
+        "create_task_button": "Create New Task",
+        "to_do_column": "To Do",
+        "in_progress_column": "In Progress",
+        "done_column": "Done"
+    },
+    "task_card": {
+        "edit": "Edit",
+        "delete": "Delete",
+        "view_details": "View Details",
+        "click_to_edit": "Click to edit"
+    },
+    "navbar": {
+        "projects": "Projects",
+        "teams": "Teams",
+        "reports": "Reports",
+        "calendar": "Calendar",
+        "open_menu": "Open main menu"
+    },
+    "user_menu": {
+        "profile": "Profile",
+        "account_settings": "Account Settings",
+        "sign_out": "Sign Out",
+        "language": "Language",
+        "role": "Role"
+    },
+    "global": {
+        "dashboard": "Dashboard",
+        "new_task": "New Task",
+        "edit_task": "Edit Task",
+        "loading": "Loading...",
+        "error_occurred": "An error occurred. Please try again.",
+        "no_data": "No data available."
+    },
+    "task_modal": {
+        "title_create": "Create New Task",
+        "subtitle": "Fill in the details below to add a new task to your dashboard.",
+        "task_name": "Enter a short and clear task name",
+        "task_name_placeholder": "Enter task name",
+        "description": "Optional: Add more context or details",
+        "description_placeholder": "Enter task description",
+        "status": "Status",
+        "priority": "Priority",
+        "assignee": "Assignee",
+        "due_date": "Due Date",
+        "submit_button_create": "Create Task",
+        "cancel_button": "Cancel"
+    }
+}

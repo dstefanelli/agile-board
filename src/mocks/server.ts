@@ -40,6 +40,7 @@ export function makeServer({ environment = 'development' } = {}) {
           image: imageUrl,
           role: "developer",
           email: "test@example.com",
+          language: "es"
         };
         if (!auth?.startsWith("Bearer ")) {
           return new Response(

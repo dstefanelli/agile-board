@@ -1,0 +1,60 @@
+{
+    "login_page": {
+        "title": "Iniciar sesión en tu cuenta",
+        "email": "Correo electrónico",
+        "email_placeholder": "juan@ejemplo.com",
+        "password": "Contraseña",
+        "password_placeholder": "Ingresa tu contraseña",
+        "submit_button": "Iniciar sesión",
+        "invalid_credentials": "Correo o contraseña inválidos"
+    },
+    "dashboard_page": {
+        "welcome_message": "Hola {{name}}",
+        "create_task_button": "Crear Nueva Tarea",
+        "to_do_column": "Por Hacer",
+        "in_progress_column": "En Progreso",
+        "done_column": "Completado"
+    },
+    "task_card": {
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "view_details": "Ver Detalles",
+        "click_to_edit": "Clic para editar"
+    },
+    "navbar": {
+        "projects": "Proyectos",
+        "teams": "Equipos",
+        "reports": "Informes",
+        "calendar": "Calendario",
+        "open_menu": "Abrir menú principal"
+    },
+    "user_menu": {
+        "profile": "Perfil",
+        "account_settings": "Configuración de cuenta",
+        "sign_out": "Cerrar sesión",
+        "language": "Idioma",
+        "role": "Rol"
+    },
+    "global": {
+        "dashboard": "Panel de control",
+        "new_task": "Nueva tarea",
+        "edit_task": "Editar tarea",
+        "loading": "Cargando...",
+        "error_occurred": "Ocurrió un error. Por favor, inténtalo de nuevo.",
+        "no_data": "No hay datos disponibles."
+    },
+    "task_modal": {
+        "title_create": "Crear Nueva Tarea",
+        "subtitle": "Completa los detalles a continuación para agregar una nueva tarea a tu panel.",
+        "task_name": "Ingresa un nombre corto y claro para la tarea",
+        "task_name_placeholder": "Ingresa el nombre de la tarea",
+        "description": "Opcional: Agrega más contexto o detalles",
+        "description_placeholder": "Ingresa la descripción de la tarea",
+        "status": "Estado",
+        "priority": "Prioridad",
+        "assignee": "Asignado a",
+        "due_date": "Fecha límite",
+        "submit_button_create": "Crear Tarea",
+        "cancel_button": "Cancelar"
+    }
+}

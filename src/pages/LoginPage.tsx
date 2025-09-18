@@ -11,8 +11,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 
 export default function LoginPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { login } = useAuth();
   const [email, setEmail] = useState("");
@@ -25,7 +27,7 @@ export default function LoginPage() {
       await login(email, password);
       navigate("/dashboard");
     } catch {
-      setError("Invalid password or user");
+      setError(t('login_page.invalid_credentials'));
     }
   }
 
@@ -35,17 +37,17 @@ export default function LoginPage() {
         <div className="flex items-center justify-center min-h-scree px-6 py-12 lg:px-8">
           <Card className="w-full max-w-sm">
             <CardHeader>
-              <CardTitle>Login to your account</CardTitle>
+              <CardTitle>{t('login_page.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} noValidate>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">{t('login_page.email')}</Label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder={t('login_page.email_placeholder')}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -53,19 +55,20 @@ export default function LoginPage() {
                   </div>
                   <div className="grid gap-2">
                     <div className="flex items-center">
-                      <Label htmlFor="password">Password</Label>
+                      <Label htmlFor="password">{t('login_page.password')}</Label>
                     </div>
                     <Input
                       id="password"
                       type="password"
                       value={password}
+                      placeholder={t('login_page.password_placeholder')}
                       onChange={(e) => setPassword(e.target.value)}
                       required
                     />
                   </div>
                   <div className="grid gap-2">
                     <Button className="w-full" type="submit">
-                      Login
+                      {t('login_page.submit_button')}
                     </Button>
                   </div>
                 </div>

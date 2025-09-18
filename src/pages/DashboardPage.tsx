@@ -7,14 +7,29 @@ import Spinner from "@/components/Spinner";
 import ErrorMessage from "@/components/ErrorMessage";
 import { type Task } from "@/models/task";
 import { useMemo } from "react";
-
-const BOARD_COLUMNS = [
-  { id: "todo", title: "TO DO", status: "To Do" },
-  { id: "in-progress", title: "IN PROGRESS", status: "In Progress" },
-  { id: "done", title: "DONE", status: "Done" },
-] as const;
+import { useTranslation } from "react-i18next";
 
 export default function DashboardPage() {
+  const { t } = useTranslation();
+
+  const BOARD_COLUMNS = [
+    { 
+      id: "todo", 
+      title: t('dashboard_page.to_do_column'), 
+      status: "To Do" 
+    },
+    { 
+      id: "in-progress", 
+      title: t('dashboard_page.in_progress_column'),
+      status: "In Progress" 
+    },
+    { 
+      id: "done", 
+      title: t('dashboard_page.done_column'), 
+      status: "Done" 
+    },
+  ];
+
   const {
     data: tasks = [],
     isLoading,
@@ -52,7 +67,7 @@ export default function DashboardPage() {
                   {BOARD_COLUMNS.map((column) => (
                     <div key={column.id} className="group relative">
                       <h2 className="text-1xl font-bold text-gray-900 mb-4">
-                        {column.title}
+                        {column.title} {groupedTasks[column.status].length}
                       </h2>
                       {(groupedTasks[column.status] || []).map((task) => (
                         <TaskCard task={task} key={task.id} />

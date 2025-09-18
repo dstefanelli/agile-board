@@ -1,15 +1,20 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { useAuth } from "@/hooks/useAuth";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import LoginPage from "@/pages/LoginPage";
 import DashboardPage from "@/pages/DashboardPage";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Spinner from "@/components/Spinner";
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
+  if (isLoading) {
+    return <Spinner />;
+  }
   return user ? children : <Navigate to="/login" replace />;
 }
 
 export default function AppRouter() {
+  const { user } = useAuth();
   const queryClient = new QueryClient();
   return (
     <BrowserRouter>
@@ -24,6 +29,10 @@ export default function AppRouter() {
               </QueryClientProvider>
             </PrivateRoute>
           }
+        />
+        <Route 
+          path="*" 
+          element={user ? <Navigate to="/dashboard" replace /> : <Navigate to="/login" replace />} 
         />
       </Routes>
     </BrowserRouter>

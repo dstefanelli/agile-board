@@ -1,8 +1,11 @@
 import CreateTaskModal from "@/components/CreateTaskModal";
 import UserProfile from "@/components/UserProfile";
 import logo from "@/assets/scrum.svg";
+import { useTranslation } from "react-i18next";
 
 export default function NavBar() {
+  const { t } = useTranslation();
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 shadow-sm bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -17,25 +20,25 @@ export default function NavBar() {
                   href="#"
                   className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
                 >
-                  Team
+                  {t('navbar.teams')}
                 </a>
                 <a
                   href="#"
                   className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
                 >
-                  Projects
+                  {t('navbar.projects')}
                 </a>
                 <a
                   href="#"
                   className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
                 >
-                  Calendar
+                  {t('navbar.calendar')}
                 </a>
                 <a
                   href="#"
                   className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
                 >
-                  Reports
+                  {t('navbar.reports')}
                 </a>
                 <CreateTaskModal />
               </div>
@@ -52,7 +55,7 @@ export default function NavBar() {
               className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"
             >
               <span className="absolute -inset-0.5"></span>
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">{t('navbar.open_menu')}</span>
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
