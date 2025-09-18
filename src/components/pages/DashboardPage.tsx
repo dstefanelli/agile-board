@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchTasks } from "@/api/tasks";
-import Header from "@/components/Header";
-import NavBar from "@/components/NavBar";
-import TaskCard from "@/components/TaskCard";
-import Spinner from "@/components/Spinner";
-import ErrorMessage from "@/components/ErrorMessage";
+import Header from "@/components/layout/Header";
+import NavBar from "@/components/layout/NavBar";
+import TaskCard from "@/components/tasks/TaskCard";
+import Spinner from "@/components/feedback/Spinner";
+import ErrorMessage from "@/components/feedback/ErrorMessage";
 import { type Task } from "@/models/task";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
@@ -62,7 +62,7 @@ export default function DashboardPage() {
         <main>
           <div className="bg-gray-100">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+              <div className="mx-auto max-w-2xl py-16 lg:max-w-none">
                 <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:space-y-0 lg:gap-x-6">
                   {BOARD_COLUMNS.map((column) => (
                     <div key={column.id} className="group relative">

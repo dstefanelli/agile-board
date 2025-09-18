@@ -8,7 +8,7 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useTranslation } from "react-i18next";
@@ -20,7 +20,7 @@ export default function TaskCard() {
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          variant="outline"
+          variant={"outline"}
           className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
         >
           New Task
@@ -50,11 +50,11 @@ export default function TaskCard() {
             <Button
               variant="outline"
               className="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-white/5"
-            >
-              {t('task_modal.cancel_button')}
-            </Button>
+            >{t('task_modal.cancel_button')}</Button>
           </DialogClose>
-          <Button type="submit">{t('task_modal.submit_button_create')}</Button>
+          <DialogClose>
+            <Button type="submit">{t('task_modal.submit_button_create')}</Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

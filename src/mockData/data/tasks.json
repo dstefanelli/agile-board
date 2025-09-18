@@ -3,7 +3,8 @@
     "id": "T001", 
     "title": "Setup project", 
     "assignee": "Alice",
-    "status": "To Do" 
+    "status": "To Do",
+    "description": "Initialize project repository, configure development environment and install required dependencies." 
   },
   {
     "id": "T002",
@@ -13,22 +14,25 @@
     "description": "Setting up OAuth authentication flow and implementing user session management."
   },
   { 
-    "id": "T003",
+    "id": "T003", 
     "title": "Create dashboard", 
     "status": "Done",
-    "assignee": "Alice"
+    "assignee": "Alice",
+    "description": "Design and implement main dashboard layout with key metrics and task overview sections."
   },
   { 
     "id": "T004", 
     "title": "Write tests", 
     "status": "To Do",
-    "assignee": null
+    "assignee": null,
+    "description": "Create unit tests for core components and implement end-to-end testing suite."
   },
   {
     "id": "T005",
     "title": "Implement drag and drop for tasks",
     "assignee": "Alice",
-    "status": "To Do"
+    "status": "To Do",
+    "description": "Add drag and drop functionality to move tasks between different status columns."
   },
   {
     "id": "T006",
@@ -41,19 +45,22 @@
     "id": "T007",
     "title": "Create user profile page",
     "assignee": "Alice",
-    "status": "To Do"
+    "status": "To Do",
+    "description": "Design and implement user profile page with editable fields and activity history."
   },
   {
     "id": "T008",
     "title": "Implement task search feature",
     "assignee": null,
-    "status": "To Do"
+    "status": "To Do",
+    "description": "Add search functionality with filters for task title, description, and assignee."
   },
   {
     "id": "T009",
     "title": "Add task priority levels",
     "assignee": "Bob",
-    "status": "Done"
+    "status": "Done",
+    "description": "Implement priority levels (Low, Medium, High) with visual indicators for tasks."
   },
   {
     "id": "T010",
@@ -66,19 +73,22 @@
     "id": "T011",
     "title": "Implement email notifications",
     "assignee": null,
-    "status": "To Do"
+    "status": "To Do",
+    "description": "Set up email notification system for task assignments and updates."
   },
   {
     "id": "T012",
     "title": "Add task comments feature",
     "assignee": "Bob",
-    "status": "To Do"
+    "status": "To Do",
+    "description": "Enable users to add, edit, and delete comments on tasks with markdown support."
   },
   {
     "id": "T013",
     "title": "Create burndown chart",
     "assignee": "Alice",
-    "status": "Done"
+    "status": "Done",
+    "description": "Implement burndown chart to visualize sprint progress and velocity."
   },
   {
     "id": "T014",
@@ -91,19 +101,22 @@
     "id": "T015",
     "title": "Add task dependencies",
     "assignee": "Alice",
-    "status": "To Do"
+    "status": "To Do",
+    "description": "Implement task dependency tracking and visualization features."
   },
   {
     "id": "T016",
     "title": "Create team workload view",
     "assignee": null,
-    "status": "To Do"
+    "status": "To Do",
+    "description": "Build dashboard showing team member workload and task distribution."
   },
   {
     "id": "T017",
     "title": "Implement time tracking",
     "assignee": "Bob",
-    "status": "Done"
+    "status": "Done",
+    "description": "Add time tracking functionality with start/stop timer and time log history."
   },
   {
     "id": "T018",
@@ -116,6 +129,7 @@
     "id": "T019",
     "title": "Create project analytics dashboard",
     "assignee": "Bob",
-    "status": "To Do"
+    "status": "To Do",
+    "description": "Design and implement analytics dashboard with charts and project metrics."
   }
 ]

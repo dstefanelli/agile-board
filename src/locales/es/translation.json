@@ -19,7 +19,9 @@
         "edit": "Editar",
         "delete": "Eliminar",
         "view_details": "Ver Detalles",
-        "click_to_edit": "Clic para editar"
+        "click_to_edit": "Clic para editar",
+        "assignee": "Asignado: {{name}}",
+        "update_failed": "Error al actualizar la tarea."
     },
     "navbar": {
         "projects": "Proyectos",

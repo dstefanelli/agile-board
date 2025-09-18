@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { useAuth } from "@/hooks/useAuth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import LoginPage from "@/pages/LoginPage";
-import DashboardPage from "@/pages/DashboardPage";
-import Spinner from "@/components/Spinner";
+import LoginPage from "@/components/pages/LoginPage";
+import DashboardPage from "@/components/pages/DashboardPage";
+import Spinner from "@/components/feedback/Spinner";
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
   const { user, isLoading } = useAuth();

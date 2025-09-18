@@ -19,7 +19,9 @@
         "edit": "Edit",
         "delete": "Delete",
         "view_details": "View Details",
-        "click_to_edit": "Click to edit"
+        "click_to_edit": "Click to edit",
+        "assignee": "Assignee: {{name}}",
+        "update_failed": "Failed to update task."
     },
     "navbar": {
         "projects": "Projects",

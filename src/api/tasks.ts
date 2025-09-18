@@ -19,7 +19,7 @@ export async function updateTask({
   id,
   updates,
 }: {
-  id: number;
+  id: string;
   updates: Partial<Task>;
 }): Promise<Task> {
   const res = await api.put<Task>(`/tasks/${id}`, updates);

@@ -1,6 +1,6 @@
-import CreateTaskModal from "@/components/CreateTaskModal";
-import UserProfile from "@/components/UserProfile";
-import logo from "@/assets/scrum.svg";
+import CreateTaskModal from "@/components/tasks/CreateTaskModal";
+import UserProfile from "@/components/user/UserProfile";
+import logo from "@/assets/images/scrum.svg";
 import { useTranslation } from "react-i18next";
 
 export default function NavBar() {
