@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateTask } from "@/api/tasks";
 import { type Task, type TaskStatus } from "@/models/task";
@@ -33,45 +33,6 @@ export default function TaskCard({ task }: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      console.log("titleEditing", titleEditing);
-      if (
-        titleEditing &&
-        cardRef.current &&
-        !cardRef.current.contains(event.target as Node)
-      ) {
-        handleCancel();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [titleEditing]);
-
-  useEffect(() => {
-    let timeoutId: number;
-    if (showError) {
-      timeoutId = window.setTimeout(() => {
-        setShowError(false);
-      }, 2000);
-    }
-    return () => {
-      if (timeoutId) {
-        window.clearTimeout(timeoutId);
-      }
-    };
-  }, [showError]);
-
-  useEffect(() => {
-    if (titleEditing && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [titleEditing]);
-
   const updateMutation = useMutation({
     mutationFn: (updates: { title?: string; status?: TaskStatus }) =>
       updateTask({
@@ -101,10 +62,10 @@ export default function TaskCard({ task }: Props) {
     }
   }
 
-  function handleCancel() {
+  const handleCancel = useCallback(() => {
     setDraftTitle(task.title);
     setTitleEditing(false);
-  }
+  }, [task.title]);
 
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -114,6 +75,45 @@ export default function TaskCard({ task }: Props) {
       handleCancel();
     }
   }
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      console.log("titleEditing", titleEditing);
+      if (
+        titleEditing &&
+        cardRef.current &&
+        !cardRef.current.contains(event.target as Node)
+      ) {
+        handleCancel();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [titleEditing, handleCancel]);
+
+  useEffect(() => {
+    let timeoutId: number;
+    if (showError) {
+      timeoutId = window.setTimeout(() => {
+        setShowError(false);
+      }, 2000);
+    }
+    return () => {
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [showError]);
+
+  useEffect(() => {
+    if (titleEditing && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [titleEditing]);
 
   return (
     <Card className="w-full h-auto mb-4 gap-2" ref={cardRef}>
