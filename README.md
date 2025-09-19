@@ -1,69 +1,76 @@
-# React + TypeScript + Vite
+# Agile Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern task management application built with React and TypeScript.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📋 Task management
+- 🔒 User authentication
+- 🌍 Internationalization (i18n) support
+- 💅 Modern UI with Shadcn components
+- 🔄 Real-time updates with TanStack Query
+- 🎭 Mock API with Mirage.js
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js (v20.19+ / 22.12+)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Available Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Start development server
+npm run dev
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Run tests
+npm test
+
+# Build for production
+npm run build
 ```
+
+## Tech Stack
+
+- ⚛️ **React 18** - UI Library
+- 🏗️ **TypeScript** - Type Safety
+- ⚡ **Vite** - Build Tool
+- 🎨 **Tailwind CSS** - Styling
+- 🔍 **TanStack Query** - Data Fetching
+- 🌐 **i18next** - Internationalization
+- 🎭 **Mirage.js** - API Mocking
+- ✅ **Vitest** - Testing
+- 📝 **ESLint** - Linting
+- 💅 **Prettier** - Code Formatting
+
+## Project Structure
+
+```
+src/
+├── api/          # API integration
+├── components/   # React components
+├── configs/      # Configuration files
+├── context/      # React context
+├── hooks/        # Custom hooks
+├── i18n/         # Internationalization
+├── lib/          # Utilities and helpers
+├── mockData/     # Mock API data and server
+└── models/       # TypeScript interfaces
+```
+
+## Environment Variables
+
+Create a `.env.development` file in the root directory and copy `.env.sample` content.
+
+
+## Authentication
+
+Default test credentials:
+
+- Email: test@example.com
+- Password: 1234
+
