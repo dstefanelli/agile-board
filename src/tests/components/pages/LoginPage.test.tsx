@@ -1,7 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { BrowserRouter } from "react-router";
 import { describe, it } from "vitest";
-import { AuthProvider } from "@/context/AuthProvider";
 import LoginPage from "@/components/pages/LoginPage";
 
 const mockNavigate = vi.fn();
@@ -28,13 +26,7 @@ describe("Login page Test", () => {
   });
 
   it("Render the component", () => {
-    render(
-      <AuthProvider>
-        <BrowserRouter>
-          <LoginPage></LoginPage>
-        </BrowserRouter>
-      </AuthProvider>
-    );
+    render(<LoginPage />);
 
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
