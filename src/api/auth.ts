@@ -3,11 +3,6 @@ import type { User } from "@/models/user";
 import { EnvConfig } from '@/configs/env.config';
 
 const { apiUrl } = EnvConfig();
-const token = localStorage.getItem("token");
-const api = axios.create({
-  baseURL: apiUrl,
-  headers: { Authorization: `Bearer ${token}` },
-});
 
 export interface LoginResponse {
   token: string;
@@ -25,7 +20,7 @@ export async function loginApi(
 }
 
 export async function getCurrentUser(token: string): Promise<User> {
-  const res = await api.get<User>(`${apiUrl}/api/user`, {
+  const res = await axios.get<User>(`${apiUrl}/api/user`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return res.data;
