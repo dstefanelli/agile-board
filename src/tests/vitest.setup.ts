@@ -25,7 +25,7 @@ vi.mock("react-i18next", async () => {
   return {
     ...actual,
     useTranslation: () => ({
-      t: (k: string, opts?: any) => i18n.t(k, opts),
+      t: (k: string, opts?: Record<string, unknown>) => i18n.t(k, opts),
       i18n,
     }),
   };
